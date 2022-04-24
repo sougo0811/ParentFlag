@@ -8,6 +8,8 @@
 * [まとめ](#まとめ)
 
 ## アプリ概要
+ミーティングやライブ配信時の親フラを事前に防止するためのアプリ<br>
+自分の現在の状況をWebアプリから入力し、親の目の届くところにあるM5Stackにその状況が映し出されることによって、親はすぐに子供の現在の状況を理解できる<br>
 
 ## 使い方
 
@@ -45,4 +47,4 @@ python -m pip install -U --force-reinstall pip
 myvenv/Lib/site-packages/flask-login/mixins.pyの25行目のself.idをself.user_idに変更
 
 ## まとめ
-
+今回はWebアプリの処理しか完成できなかったのでM5Stackの機能も作っていきたい！
