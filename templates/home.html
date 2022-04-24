@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<div class="main">
+  <div class="space"></div>
+  <div class="canvas">
+    <h1>個人情報</h1>
+    {% for user in users %}
+      <article>
+        <h2>NAME : {{ user.user_name }}</h2>
+        <h2>ID : {{ user.user_id }}</h2>
+        <h2>親フラグ : {{ user.room_flg }}</h2>
+        <form action="/flg_chenger" method="POST">
+          <label>
+            <h3> ↓ 親フラグ変更</h3>
+          </label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="user_flg" value="True">
+            <label class="form-check-label" for="flexRadioDefault1">
+              OK
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="user_flg" value="False">
+            <label class="form-check-label" for="flexRadioDefault2">
+              NG
+            </label>
+          </div>
+          <br>
+            <button type="button" class="btn btn-outline-primary"><input type="submit" value="更新"></button>
+        </form><br>
+        <p>{{ user.created_at }}</p>
+      </article>
+      <br>
+    {% endfor %}
+    <h1>あなたの参加しているグループ</h1>
+    {% for group in groups %}
+      <article>
+        <h2>GROUP NAME : {{ group.group_name }}</h2>
+        <h2>GROUP ID : {{ group.group_id }}</h2>
+        <p>{{ group.created_at }}</p>
+        <h2>親フラグ : {{ group.room_flg }}</h2>
+        <a href="/edit/{{group.group_id}}" type="button" class="btn btn-outline-primary">編集</a>
+        <a href="/delete/{{group.group_id}}" type="button" class="btn btn-outline-primary">削除</a>
+      </article>
+      <br>
+    {% endfor %}
+    <br>
+    <a href="/create" type="button" class="btn btn-outline-primary">グループ作成</a>
+    <a href="/join" type="button" class="btn btn-outline-primary">グループに入る</a>
+    <a href="/logout" type="button" class="btn btn-outline-primary">ログアウト</a>
+  </div>
+  <div class="space"></div>
+</div>
+{% endblock %}
